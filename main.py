@@ -44,6 +44,7 @@ async def main():
 
     await application.initialize()
     await application.start()
+    await application.updater.start_polling()
     print("Bot started. Press Ctrl+C to stop.")
 
     await check_and_send(application)
@@ -63,6 +64,7 @@ async def main():
     finally:
         job_scheduler.shutdown()
         payment_scheduler.shutdown()
+        await application.updater.stop()
         await application.stop()
         await application.shutdown()
 
