@@ -12,7 +12,7 @@ from dashboard import run_dashboard
 from payments import check_email_payments
 from scheduler import check_and_send, start_scheduler
 
-SBP_PRICE = int(os.getenv("SBP_PRICE", "500"))
+SBP_PRICE = int(os.getenv("SBP_PRICE", "500") or "500")
 
 
 async def auto_payment_check(application):

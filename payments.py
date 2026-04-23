@@ -9,7 +9,7 @@ import database as db
 IMAP_SERVER = os.getenv("IMAP_SERVER", "imap.gmail.com")
 IMAP_USER = os.getenv("IMAP_USER", "")
 MAP_PASS = os.getenv("IMAP_PASS", "")
-SBP_PRICE = int(os.getenv("SBP_PRICE", "500"))
+SBP_PRICE = int(os.getenv("SBP_PRICE", "500") or "500")
 
 
 def _decode_subject(subject: str) -> str:
