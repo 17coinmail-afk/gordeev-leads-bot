@@ -1,0 +1,11 @@
+python-telegram-bot>=20.7
+feedparser
+aiohttp
+apscheduler
+beautifulsoup4
+lxml
+playwright
+openai
+qrcode[pil]
+flask
+python-dotenv
