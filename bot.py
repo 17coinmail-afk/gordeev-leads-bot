@@ -17,11 +17,11 @@ from telegram.ext import (
 import database as db
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "YOUR_BOT_TOKEN_HERE")
-ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0"))
+ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0") or "0")
 
 SBP_PHONE = os.getenv("SBP_PHONE", "+79990000000")
 SBP_BANK = os.getenv("SBP_BANK", "Тинькофф")
-SBP_PRICE = int(os.getenv("SBP_PRICE", "500"))
+SBP_PRICE = int(os.getenv("SBP_PRICE", "500") or "500")
 
 # Антифлуд: user_id -> timestamp
 _antiflood = {}
