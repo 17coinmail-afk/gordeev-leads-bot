@@ -256,9 +256,9 @@ async def pay(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"2. Или переведите по СБП на <code>{SBP_PHONE}</code> ({SBP_BANK})\n"
         f"3. В комментарии: <code>Pro {user_id}</code>\n"
         f"4. Подписка активируется автоматически за 1–3 мин\n\n"
-        f"Если что-то пошло не так — пишите админу.",
+        f"Если что-то пошло не так — пишите админу."
     )
-    await update.message.reply_photo(photo=qr_buf, caption=caption[0], parse_mode="HTML")
+    await update.message.reply_photo(photo=qr_buf, caption=caption, parse_mode="HTML")
 
 
 async def pro_status(update: Update, context: ContextTypes.DEFAULT_TYPE):

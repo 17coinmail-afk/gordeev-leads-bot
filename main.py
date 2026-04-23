@@ -38,14 +38,18 @@ async def main():
     application = run_bot()
 
     # Запускаем веб-дашборд (порт из env для Render/Railway)
-    port = int(os.getenv("PORT", "8080"))
+    port = int(os.getenv("PORT", "8080") or "8080")
     run_dashboard(port)
     print(f"Dashboard running on http://0.0.0.0:{port}")
 
     await application.initialize()
     await application.start()
-    await application.updater.start_polling()
-    print("Bot started. Press Ctrl+C to stop.")
+    try:
+        await application.updater.start_polling()
+        print("Bot started. Press Ctrl+C to stop.")
+    except Exception as e:
+        print(f"FAILED to start bot polling: {e}")
+        raise
 
     await check_and_send(application)
     await auto_payment_check(application)
@@ -64,7 +68,10 @@ async def main():
     finally:
         job_scheduler.shutdown()
         payment_scheduler.shutdown()
-        await application.updater.stop()
+        try:
+            await application.updater.stop()
+        except Exception:
+            pass
         await application.stop()
         await application.shutdown()
 
