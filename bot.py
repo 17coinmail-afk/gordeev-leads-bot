@@ -16,7 +16,9 @@ from telegram.ext import (
 
 import database as db
 
-BOT_TOKEN = os.getenv("BOT_TOKEN", "YOUR_BOT_TOKEN_HERE")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "") or ""
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN is not set! Please set the BOT_TOKEN environment variable on Render.")
 ADMIN_USER_ID = int(os.getenv("ADMIN_USER_ID", "0") or "0")
 
 SBP_PHONE = os.getenv("SBP_PHONE", "+79990000000")
